@@ -1,0 +1,37 @@
+services:
+  api:
+    image: ${NAME}:${API_VERSION}
+    container_name: ${NAME}-api
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres_db
+  postgres_db:
+    container_name: ${NAME}-db
+    image: postgres:12
+    restart: always
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  # migrate:
+  #   container_name: ${NAME}-migrate
+  #   image: migrate/migrate:latest
+  #   depends_on:
+  #     - postgres_db
+  #   entrypoint:
+  #     [
+  #       "sh",
+  #       "-c",
+  #       "migrate -path=../backend/migrations -database postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres_db/${POSTGRES_DB}?sslmode=${POSTGRES_SSLMODE} up"
+  #     ]
+  #   volumes:
+  #     - ../backend/migrations:/migrations
+
+volumes:
+  pgdata: {}
