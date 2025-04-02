@@ -1,10 +1,14 @@
 import "./App.css";
 import SidebarContainer from "./components/layout/SidebarContainer";
+import FolderCart from "./components/modules/FolderCart";
 
 function App() {
   return (
     <>
-      <SidebarContainer />
+      <div className="w-full flex">
+        <SidebarContainer />
+        <FolderCart />
+      </div>
     </>
   );
 }

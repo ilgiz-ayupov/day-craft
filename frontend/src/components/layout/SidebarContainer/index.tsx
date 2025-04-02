@@ -32,7 +32,7 @@ const SidebarContainer = () => {
   }, []);
 
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen w-[300px]">
       <div className="fixed top-0 left-0 h-full bg-white shadow-sm z-40 transition-all duration-300 ease-in-out overflow-y-auto w-64">
         <div className="h-full flex flex-col">
           <div className="p-4 flex items-center justify-between ">
