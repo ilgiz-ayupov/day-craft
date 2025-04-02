@@ -1,4 +1,4 @@
-// import "./App.css";
+import "./App.css";
 import SidebarContainer from "./components/layout/SidebarContainer";
 
 function App() {
